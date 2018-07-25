@@ -111,34 +111,58 @@ function addFavourite(arg) {
 	}
 
 	console.log("isfavListExists flag :: "+isfavListExists);
-
+	console.log("moveList :: "+moveList);
 	if(!isfavListExists){
-		moveList.forEach(element => {
+		moveList.forEach(function (data) {
 		
-			console.log('element.name ::'+element.title);
-			if(element.id === arg){
+			console.log('element.name ::'+data.title);
+			if(data.id === arg){
 				const li = document.createElement('li');
 				const liInnerHtml =`
 					<div class="list-group-item list-group-item-primary">
-						<h4 id="${element.id}" data-value=${element.title}>Movie : ${element.title}</h4>					
-						<img src="${element.posterPath}" class="mx-auto d-block"  alt="Poster image">					
-						<p class="d-flex textblock" >${element.overview} </p>
-						<button type="submit" class="btn btn-primary btn-block" onclick="removFavourite(${element.id})">RemoveFavourites</button>					
+						<h4 id="${data.id}" data-value=${data.title}>Movie : ${data.title}</h4>					
+						<img src="${data.posterPath}" class="mx-auto d-block"  alt="Poster image">					
+						<p class="d-flex textblock" >${data.overview} </p>
+						<button type="submit" class="btn btn-primary btn-block" onclick="removFavourite(${data.id})">RemoveFavourites</button>					
 					</div>
 				`;
 				li.innerHTML = liInnerHtml;
 				favListUL.appendChild(li);
-				favMovieList.push(element);
-				postData(`http://localhost:3000/favourites`, {element})
-						.then(data => console.log(data)) // JSON from `response.json()` call
-						.catch(error => console.error(error));}		
+				
+				favMovieList.push(data);
+				fetch(`http://localhost:3000/favourites`,{
+					method: "POST",
+					body :JSON.stringify(data),
+					headers:{
+						'Content-Type': 'application/json'
+					  }
+				})
+				.then(resdata => console.log(resdata))// JSON from `response.json()` call
+				.catch(error => console.error(Promise.reject(Error(err))));
+			}		
 		});
 	}
 		
 }
 
-function removFavourite(){
+function removFavourite(id){
+	console.log(favMovieList);
+	favMovieList.forEach(data => {
+		console.log(data);
+		if(data.id===id){
+			const list = document.getElementById('favouritesList');
 
+			list.removeChild(list.childNodes[0]);
+
+			return fetch(`http://localhost:3000/favourites`, {
+				method: 'delete',
+				body : JSON.stringify(data)
+			  })
+			  .then(response => console.log(response.json()))
+			  .catch(error => console.error(Promise.reject(Error(err))));
+		}
+
+	});
 }
 // invoke getMovies function and manipulate DOM 
 
