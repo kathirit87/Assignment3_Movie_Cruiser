@@ -21,16 +21,22 @@
   ],
   "favourites": [
     {
+      "id": 3,
+      "title": "thor",
+      "posterPath": "../images/thor.jpg",
+      "overview": "The reckless Thor (Chris Hemsworth) son of Odin (Anthony Hopkins), challenges his brother's claim to the throne of Asgard. To teach him humility , Odin casts the young warrior down to Earth to live among humans. Robbed of his powers, Thor falls in love with a scientist Jane Foster (Natalie Portman)."
+    },
+    {
       "id": 1,
       "title": "300",
       "posterPath": "../images/300.jpg",
       "overview": "300 is a 2006 American epic war film based on the 1998 comic series 300 by Frank Miller and Lynn Varley. ... The plot revolves around King Leonidas (Gerard Butler), who leads 300 Spartans into battle against the Persian 'god-King' Xerxes (Rodrigo Santoro) and his invading army of more than 300,000 soldiers."
     },
     {
-      "id": 3,
-      "title": "thor",
-      "posterPath": "../images/thor.jpg",
-      "overview": "The reckless Thor (Chris Hemsworth) son of Odin (Anthony Hopkins), challenges his brother's claim to the throne of Asgard. To teach him humility , Odin casts the young warrior down to Earth to live among humans. Robbed of his powers, Thor falls in love with a scientist Jane Foster (Natalie Portman)."
+      "id": 2,
+      "title": "titanic",
+      "posterPath": "../images/titanic.jpg",
+      "overview": "The movie is about the 1912 sinking of the RMS Titanic. It stars Kate Winslet and Leonardo DiCaprio. The two play characters who are of different social classes. They fall in love after meeting aboard the ship, but it was not good for a rich girl to fall in love with a poor boy in 1912."
     }
   ]
 }
